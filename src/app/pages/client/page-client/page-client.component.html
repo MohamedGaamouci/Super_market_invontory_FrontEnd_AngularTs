@@ -1,0 +1,35 @@
+<div class="col txt">
+
+  <div class="row m-3">
+    <div class="col-md-8 p-0 my-text nc">
+      <h1>Liste des clients</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <app-boutton-action
+      (clickEvent)="nouveauClient()"
+      ></app-boutton-action>
+    </div>
+  </div>
+
+
+  <div class="col m-3">
+    <div class="alert alert-danger" *ngIf="errorMsg">
+      {{ errorMsg }}
+    </div>
+    <div class="card" style="max-height: 500px; overflow-x: hidden; overflow-y: scroll;">
+    <app-detail-clt-frs
+      *ngFor="let client of listClient"
+      [clientFournisseur]="client"
+      [origin]="'client'"
+      (suppressionResult)="handleSuppression($event)"
+    ></app-detail-clt-frs>
+  </div>
+</div>
+
+<div class="row mb-3 mt-3">
+  <div class=" col-md-12 text-center ">
+    <app-pagination></app-pagination>
+  </div>
+</div>
+
+</div>

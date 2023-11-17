@@ -1,0 +1,149 @@
+<div class="col mb-3 txt">
+    <div class="col-md-12">
+        <div class="col-md-12 mb-3 mt-3 my-text txt">
+            <h1 class="nc">Nouvelle Vente</h1>
+        </div>
+
+        <div class="row mt-2 p-3 custom-border" id="super">
+            <div class="row col-md-12">
+               
+                <div class="col-md-8 custom-border-right">                    
+
+                        <div class="form-group" id="g">
+                        <div class="row col-md-12 ">
+                            <input type="text" class="form-control col-md-5" name="codevnt" placeholder="Code vente"[(ngModel)]="cd_vent">
+                        <div class="col-md-3">
+                             <button class="btn btn-warning my-text" (click)="generateRandomValue()"><i class="fa fa-qrcode fa-1x my-icon"></i> Generate code </button>
+                        </div>
+                        </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="date" class="form-control" placeholder="Date vente" [(ngModel)]="date">
+                        </div>
+
+
+                        <div class="form-group">
+                            <textarea class="form-control" id="" cols="25" rows="2" placeholder="Commantaire"
+                                [(ngModel)]="Commantaire"></textarea>
+                        </div>
+                </div>
+
+                    <div class="col-md-4 text-center mt-5 my-text hc">
+                        <h3 id="second" class="custom-border txt mt-2 ml-5">
+                                <span>Total Ventes: </span>
+                                <span>{{total }} DA</span>
+                        </h3>
+                    </div>               
+            </div>
+        </div>
+
+
+
+
+        <div class="row mt-2 p-3 custom-border">
+            <div class="form-row col-md-12">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Code article" [(ngModel)]="codeArticle"
+                        (input)="filtrerArticle()">
+                    <div *ngIf="codeArticle.length && !articleNotYetSelected"
+                        class="shadow p-3 mb-5 rounded hc">
+                        <p class="p-1 curs_select" *ngFor="let article of listArticle"
+                            (click)="selectArticleClick(article)">
+                            {{ article.codeArticle }}&nbsp; {{ article.designation }}
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Quantite" [(ngModel)]="quantite">
+                </div>
+                <div class="col-md-3">
+                    <label type="text" class="form-control">{{prix_u_ht * quantite}}</label>
+                </div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-success my-text"><i class="fas fa-plus fa-1x my-icon"
+                            (click)="AddligneVNT()"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ligne de vente details -->
+<div class="col-md-12 custom-border mt-2"style="max-height: 150px; overflow-x: hidden; overflow-y: scroll;">
+        <div class="row custom-border m-1 my-card hc" *ngFor="let ligneV of Ventes">
+             
+            <div class="col-md-4 custom-border-right mb-1 mt-1 ">
+                <div class="row text-center">
+                    <div class="col-md-11">{{ligneV.article?.codeArticle}}</div>
+                </div>
+            </div>
+
+            <div class="col-md-4 custom-border-right mb-1 mt-1 ">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        {{ligneV.quantite}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 custom-border-right mb-1 mt-1 ">
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        {{ligneV.prixUnitaire}}
+                    </div>
+                </div>
+            </div>
+        </div> </div>
+
+
+
+        <div class="row mt-2 p-3 custom-border txt my-card">
+            <div class="col-md-12 text-right">
+                <h3 style="text-align: left;" class="my-text hc">Total: {{total}} DA</h3>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12 text-right mt-2">
+        <button class="btn btn-danger mr-3 my-text" routerLink="/ventes">
+            <i class="fas fa-ban my-icon"></i>&nbsp;
+            Annuler
+        </button>
+        <button class="btn btn-primary my-text " data-toggle="modal" (click)="prepaireVentes()" data-target="#exampleModal">
+            <i class="fas fa-save my-icon"></i>&nbsp;
+            Enregitrer
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<div class="modal fade txt" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    autofocus>
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header ">
+                <h5 class="modal-title my-text nc" id="exampleModalLabel">'Confirmation du vente' </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text my-text nc">
+
+                <p>'vous etes confirmer cette vente?' </p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger my-text" data-dismiss="modal"><i
+                        class="fas fa-ban my-icon"></i>&nbsp;Retour</button>
+                <button type="button" class="btn btn-primary my-text" (click)="saveVente()"> <i
+                        class="fas fa-save my-icon"></i>&nbsp;confirmer</button>
+            </div>
+        </div>
+    </div>
+</div>

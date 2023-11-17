@@ -1,0 +1,135 @@
+<div class="col">
+  <div class="row m-3">
+    <div class="col-md-12 p-0">
+      <h1 class="my-text nc">Mouvements du stock</h1>
+      <hr style="border:rgb(35, 123, 255) double;" />
+    </div>
+    <div class="col-md-4 p-0 text-right">
+      <app-boutton-action [isImporterVisible]="false" [isNouveauVisible]="false"></app-boutton-action>
+    </div>
+  </div>
+  <div class="col-md-12 p-0">
+    <div>
+
+      <!-- list articles -->
+      <div class="col">
+        <div class="row">
+          
+          <div class="col-8">
+            <div class=" card " style="max-height: 200px; overflow-x: hidden; overflow-y: scroll;border: 1px solid;">
+              <div class="col-md-11 ml-4 custom-border mt-2 my-card" *ngFor="let art of listArticle">
+                <div class="row ">
+                 
+                  <div class="col-md-2 custom-border-right p-1 text-center mb-1 mt-1 ">
+                    <img [src]="art.photo ? art.photo : 'assets/product.png'" width="100px" height="100px" class=" my-text hc">
+                  </div>
+
+                  <div class="col mt-4">
+                    <div class=" my-text"><i class="fas fa-info-circle blue-color my-icon"></i>{{art.designation}}</div>
+                    <div class="mt-3  my-text"><i class="fas fa-info-circle blue-color my-icon"></i>{{art.codeArticle}}</div></div>
+                   
+                    <div class="col mt-4 ">
+                    <div class=" my-text"><i class="fas fa-dollar-sign blue-color my-icon"></i>{{art.prixUnitaireHt}}</div>
+                    <div class="mt-3  my-text"><i class="fas fa-dollar-sign blue-color my-icon"></i>{{art.prixUnitaireTtc}}</div></div>
+                   
+                    <div class="col mt-5">
+                    <div *ngIf="art.id!=undefined" class="mt-2">
+                      <button class="dtbtn btn btn-primary bd-btn my-text" (click)="getmvtstk(art.id)"><i class="fa fa-book fa-1x my-icon"></i>  details</button>
+                    </div>
+                  </div>
+                </div>
+                <br />
+              </div>
+            </div>
+          </div>
+           
+          
+          
+          
+          <div class="col-4 mt-5">
+            <div class=" card custom-border">
+              <div class="custom-border">
+                <h2 class="stock-title my-text"> <i class="fa fa-info-circle blue-color my-icon"></i> Reel Stock :   {{ArticleName}}</h2>
+                <h6 class="my-text "><i class="fa fa-info-circle blue-color my-icon"></i> Quantity: <span id="quantity-value">{{reelstock}}</span></h6>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========================= -->
+        <div class="col-md-12 p-0">
+          <table class="col-md-12 mt-3 table-hover">
+            <tr class="col-md-12  ">
+              <th class="col-md-2 text-center cc custom-border my-text table-primary">quantiti</th>
+              <th class="col-md-2 text-center cc custom-border my-text table-primary">typemvt</th>
+              <th class="col-md-2 text-center cc custom-border my-text table-primary">source</th>
+              <th class="col-md-3 text-center cc custom-border my-text table-primary">date mvt</th>
+              <th class="col-md-3 text-center cc custom-border my-text table-primary">correction</th>
+            </tr>
+
+            <tr class="col-md-12"*ngFor="let i of g">
+                <td class="text-center cc custom-border my-text">{{i.quantite}}</td>
+                <td class="text-center cc custom-border my-text">{{i.typeMvt}}</td>
+                <td class="text-center cc custom-border my-text" >{{i.sourceMvt}}</td>
+                <td class="text-center cc custom-border my-text">{{i.dateMvt}}</td>
+                <td class="text-center cc custom-border my-text" id="t5">
+                 
+                   
+                      <div *ngIf="i.id!=undefined">
+                        <button type="button" class="btn btn-link my-text" data-toggle="modal" data-target="#exampleModal"
+                          (click)="put(i)">
+                          <i class="fab fa-stack-overflow blue-color my-icon"></i>&nbsp;Correction de stock
+                        </button>
+                      </div>
+                  
+                
+                </td>
+              </tr><br/>
+
+          </table>
+
+
+        </div>
+
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+      autofocus>
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Correction de stock</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Quantite" [(ngModel)]="corection.quantite" />
+            </div>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="corection.typeMvt">
+                <option value="CORRECTION_POS">CORRECTION_POS</option>
+                <option value="CORRECTION_NEG">CORRECTION_NEG</option>
+              </select>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal"><i
+                class="fas fa-ban"></i>&nbsp;Annuler</button>
+            <button type="button" class="btn btn-primary" (click)="correction()"> <i
+                class="fas fa-save"></i>&nbsp;Enregistrer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- +++++++++++++ -->
+    <div class="row mb-3">
+      <div class=" col-md-12 text-center">
+        <app-pagination></app-pagination>
+      </div>
+    </div>
+  </div>

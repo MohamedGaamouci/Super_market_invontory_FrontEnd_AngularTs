@@ -1,0 +1,88 @@
+<div *ngIf="isLoading; else content">
+
+  <div class="col-md-12 alert alert-danger text-center txt">
+    <h1 id="permission " class="my-text"> You Don't Have The Permission </h1>
+  </div>
+</div>
+
+<ng-template #content>
+  <div class="col mb-3 txt">
+    <hr>
+    <div class="col-md-12">
+      <div class="col-md-12 mb-3">
+        <h2 class="my-text"><i class="my-icon fas fa-info-circle blue-color "></i>&nbsp;Information de l'utilisateur
+        </h2>
+      </div>
+      <div class="col-md-12">
+
+        <div class="col-md-12 mb-3 mt-3">
+          <button (click)="fileInput.click()" style="background-color: transparent; border: none;">
+            <img [src]="imgUrl" class="rounded-circle hc  my-text" width="200px" height="200px" />
+            <input hidden type="file" #fileInput (change)="onFileInput(fileInput.files)">
+          </button>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Nom" required [(ngModel)]="userbd.nom">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Adresse 1" required [(ngModel)]="add.adresse1">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Prenom" required [(ngModel)]="userbd.prenom">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Adresse 2" [(ngModel)]="add.adresse2">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="email" class="form-control" placeholder="E-mail" required [(ngModel)]="userbd.email">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Ville" required [(ngModel)]="add.ville">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="number" class="form-control" placeholder="Code postal" [(ngModel)]="add.codePostale">
+          </div>
+
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Pays" required [(ngModel)]="add.pays">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <input type="password" class="form-control" placeholder="password" required
+              [(ngModel)]="userbd.moteDePasse">
+          </div>
+
+          <div class="col">
+            <input type="date" class="form-control" placeholder="date" required [(ngModel)]="date">
+          </div>
+        </div>
+
+        <div class="col my-text">
+          <label>Role : {{Emloyee}}</label>
+
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-12 text-right">
+      <button class="btn btn-danger mr-3 my-text" (click)="cancel()">
+        <i class="my-icon fas fa-ban"></i>&nbsp;
+        Annuler
+      </button>
+      <button class="btn btn-primary my-text" (click)="confirm()">
+        <i class="fas fa-save my-icon"></i>&nbsp;
+        Enregitrer
+      </button>
+    </div>
+
+  </div>
+</ng-template>

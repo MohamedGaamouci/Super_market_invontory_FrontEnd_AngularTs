@@ -1,0 +1,41 @@
+<div class="row mb-1 mr-0 custom-border txt">
+  <div class="col-md-2 custom-border-right p-1 text-center mb-1 mt-1 ">
+    <img class="hc my-text" [src]="cltFrs?.photo ? cltFrs?.photo : 'assets/product.png'" width="100px" height="100px">
+  </div>
+
+  <!--  Details article-->
+  <div class="col-md-5 custom-border-right mb-1 mt-1 ">
+    <div class="col">
+      <div class="row my-text">
+        <div class="col-md-1"><i class="my-icon fas fa-info-circle blue-color"></i></div>
+        <div class="col-md-10">{{ cltFrs?.nom }}</div>
+      </div>
+      <div class="row my-text">
+        <div class="col-md-1"><i class="my-icon fas fa-info-circle blue-color"></i></div>
+        <div class="col-md-10">{{ cltFrs?.prenom }}</div>
+      </div>
+      <div class="row my-text">
+        <div class="col-md-1"><i class="my-icon fas fa-phone-alt blue-color"></i></div>
+        <div class="col-md-10">{{ cltFrs?.numTel }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!--  details commande-->
+  <div class="col-md-3 mb-1 mt-1 ">
+    <div class="col">
+      <div class="row my-text">
+        <div class="col-md-1"><i class="my-icon fas fa-info blue-color"></i></div>
+        <div class="col-md-10">{{ commande.code }}</div>
+      </div>
+      <div class="row my-text">
+        <div class="col-md-1"><i class="my-icon fas fa-calendar-check blue-color"></i></div>
+        <div class="col-md-10">{{ commande.dateCommande }}</div>
+      </div>
+      <div class="row my-text">
+        <div class="col-md-1"><i class="my-icon fas fa-cart-arrow-down blue-color"></i></div>
+        <div class="col-md-10">{{ commande.etatCommande }}</div>
+      </div>
+    </div>
+  </div>
+</div>

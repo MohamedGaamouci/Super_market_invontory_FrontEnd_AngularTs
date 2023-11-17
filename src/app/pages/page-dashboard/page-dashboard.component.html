@@ -1,0 +1,61 @@
+<div class="main-container txt">
+  <div class="row min-height-600 no-flex-wrap">
+    <div class="card col-md-2 mr-2">
+      <div class="col pl-0 pr-0">
+        <div class="card mt-3 mb-2 border-none text-center">
+          <h4 class="my-text nc"><i>Gestion de Supermarche</i></h4>
+          <small class="my-text hc an_txt_endless" data-toggle="modal" data-target="#exampleModal">Made By GBG
+            Team</small>
+        </div><br />
+        <div>
+          <app-menu></app-menu>
+        </div>
+      </div>
+    </div>
+    <div class="card col-md-10 pl-0 pr-0 backgroung-grey border-none">
+      <div class="col pl-0 pr-0 d-flex flex-column justify-content-between">
+        <div class="card p-3 min-height-80 mb-2">
+          <app-header></app-header>
+        </div>
+        <div class="card mb-2" style="min-height: 480px">
+          <app-loader></app-loader>
+          <router-outlet></router-outlet>
+        </div>
+        <div class="card min-height-80">
+          <div class="col-md-12 text-center">
+            <h1 class="my-text hc _text" data-toggle="modal" data-target="#exampleModal">Made by GBG Team</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+    autofocus>
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header text-center">
+          <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-info blue-color my-icon"></i> Information de
+            devlopers</h5>
+
+        </div>
+        <div class="modal-body">
+          <h4 class="my-text"><i class="fas fa-info-circle blue-color my-icon"></i> Groupe: GBG Team</h4>
+          <h4 class="my-text"><i class="fas fa-info-circle blue-color my-icon"></i> Email: gaamoucimohamed@gmail.com
+          </h4>
+          <h4 class="my-text"><i class="fas fa-info-circle blue-color my-icon"></i> telephone:0779209330</h4>
+
+        </div>
+        <div class="modal-footer ">
+          <button type="button " class="btn btn-info my-text btn-focus" data-dismiss="modal">
+            <i class="fas fa-check my-icon"></i>&nbsp;Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

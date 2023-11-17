@@ -1,0 +1,48 @@
+<div class="col txt">
+  <div class="row m-3">
+    <div class="col-md-8 p-0">
+      <h1 class="my-text nc">Commande {{origin}}s</h1>
+    </div>
+    <div class="col-md-4 text-right">
+      <app-boutton-action [isImporterVisible]="false" (clickEvent)="nouvelleCommande()"></app-boutton-action>
+    </div>
+  </div>
+<div   style="max-height: 1000px;overflow-x: hidden; overflow-y: scroll">
+  <div class="col m-3">
+    <div class="accordion" id="accordionExample" *ngFor="let cmd of listeCommandes">
+      <div class="card">
+        <div class="card-body" id="headingOne">
+          <button class="btn btn-block text-left" type="button" data-toggle="collapse"
+            [attr.data-target]="'#collapseOne'+cmd.id" aria-expanded="true" aria-controls="collapseOne">
+            <app-detail-cmd-clt-frs [commande]="cmd" [origin]="origin"></app-detail-cmd-clt-frs>
+          </button>
+        </div>
+        <div id="collapseOne{{cmd.id}}" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample"
+          style="max-height: 500px; overflow-y: scroll">
+          <div class="card-body my-text m-2">
+            <app-detail-cmd *ngFor="let ligne of mapLignesCommande.get(cmd.id)"
+              [ligneCommande]="ligne"></app-detail-cmd>
+          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row">
+            <div class="col-md-6 text-left my-text">
+              <!-- probleme dans console car .length -->
+              <h5>{{mapLignesCommande.get(cmd.id).length}} lignes de commande</h5>
+            </div>
+            <div class="col-md-6 text-right my-text">
+              <h5>Total commande: {{ calculerTotalCommande(cmd.id) }} DA</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+
+
+  <div class="row mb-3 mt-3">
+    <div class=" col-md-12 text-center ">
+      <app-pagination></app-pagination>
+    </div>
+  </div>
+</div>

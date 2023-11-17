@@ -1,0 +1,42 @@
+<div class="row m-3 txt">
+  <div class="card col-md-4 text-center mr-3">
+    <div class="col">
+      <div class="mb-3 mt-3">
+        <img src="assets/product.png" class="rounded-circle my-card" width="200px" height="200px"/>
+      </div>
+
+      <div class="mb-3">
+        <h2 class="my-text">{{connectedUser.nom+'  '+connectedUser.prenom}}</h2>
+        <small class="form-text text-muted my-text">{{connectedUser.adresse?.adresse1+'/'+connectedUser.adresse?.adresse2}},{{connectedUser.adresse?.codePostale}},{{connectedUser.adresse?.ville}},{{connectedUser.adresse?.pays}}</small>
+      </div>
+
+      <div class="col mb-3 p-0">
+        <button type="button" class="btn btn-warning my-text" (click)="modifierMotDePasse()"><i class="fas fa-lock my-icon"></i>&nbsp;Changer le mot de passe</button>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="card col-md-7">
+    <table class="table">
+      <tbody>
+      <tr class="my-text">
+        <th scope="row">Nom complet</th>
+        <td>{{connectedUser.nom+'  '+connectedUser.prenom}}</td>
+      </tr>
+      <tr class="my-text">
+        <th scope="row">Email</th>
+        <td>{{connectedUser.email}}</td>
+      </tr>
+      <tr class="my-text">
+        <th scope="row">Adresse</th>
+        <td>{{connectedUser.adresse?.adresse1+'/'+connectedUser.adresse?.adresse2+','+connectedUser.adresse?.ville+','+connectedUser.adresse?.pays}}</td>
+      </tr>
+      <tr class="my-text">
+        <th scope="row">Entreprise</th>
+        <td>{{connectedUser.entreprise?.nom}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

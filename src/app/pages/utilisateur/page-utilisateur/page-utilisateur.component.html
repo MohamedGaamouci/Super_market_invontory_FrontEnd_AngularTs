@@ -1,0 +1,90 @@
+<div *ngIf="isLoading; else content">
+
+  <div class="col-md-12 text-center alert alert-danger txt">
+    <h1 id="permission" class="my-text"> You Don't Have The Permission </h1>
+  </div>
+</div>
+
+
+<ng-template #content>
+  <div class="col txt">
+    <div class="row m-3">
+      <div class="col-md-8 p-0">
+        <h1 class="my-text">Liste des utilisateurs</h1>
+      </div>
+      <div class="col-md-4 text-right">
+        <app-boutton-action (clickEvent)="nouvelUtilosateur()"></app-boutton-action>
+      </div>
+    </div>
+    <div style=" max-height: 800px ;overflow-x: hidden; overflow-y: scroll;">
+      <div class="col m-3">
+        <div *ngFor="let i of bd">
+          <div class="row mb-1 mr-0 custom-border">
+            <div class="col-md-2 custom-border-right p-1 text-center mb-1 mt-1 ">
+              <img [src]="i.photo ? i.photo : 'assets/product.png'" width="100px" height="100px">
+            </div>
+
+
+
+            <!--  Details user-->
+            <div class="col-md-5 custom-border-right  mb-1 mt-1 ">
+              <div class="col">
+                <div class="row my-text">
+                  <div class="col-md-1"><i class="my-icon fas fa-info-circle blue-color"></i></div>
+                  <div class="col-md-10">{{i.nom}}</div>
+                </div>
+                <div class="row my-text">
+                  <div class="col-md-1"><i class="my-icon fas fa-info-circle blue-color"></i></div>
+                  <div class="col-md-10">{{i.prenom}}</div>
+                </div>
+                <div class="row my-text">
+                  <div class="col-md-1"><i class="my-icon fas fa-phone-alt blue-color"></i></div>
+                  <div class="col-md-10">{{i.email}}</div>
+                </div>
+              </div>
+            </div>
+
+            <!--  details user2-->
+            <div class="col-md-3 custom-border-right  mb-1 mt-1 ">
+              <div class="col">
+                <div class="row my-text">
+                  <div class="col-md-1"><i class="my-icon fas fa-home blue-color"></i></div>
+                  <div class="col-md-10">{{i.adresse?.adresse1+''+i.adresse?.adresse2}}</div>
+                </div>
+                <div class="row my-text">
+                  <div class="col-md-1"><i class="my-icon fas fa-map-marker-alt blue-color"></i></div>
+                  <div class="col-md-10">1{{i.adresse?.codePostale+''+i.adresse?.ville}}</div>
+                </div>
+                <div class="row my-text">
+                  <div class="col-md-1"><i class="my-icon fas fa-globe-europe blue-color"></i></div>
+                  <div class="col-md-10">{{i.adresse?.pays}}</div>
+                </div>
+              </div>
+            </div>
+
+            <!--  boutons action-->
+            <div class="col-md-1 mb-1 mt-1 ">
+              <div class="row my-text">
+
+                <div class="col-md-4 ">
+                  <button type="button" class="btn btn-link text-danger" (click)="i.id && delete_user(i.id)">
+                    <i class="my-icon fas fa-trash-alt"></i>&nbsp;<span>Supprimer</span>
+                  </button>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="row mb-3 mt-3">
+    <div class=" col-md-12 text-center ">
+      <app-pagination></app-pagination>
+    </div>
+  </div>
+</ng-template>

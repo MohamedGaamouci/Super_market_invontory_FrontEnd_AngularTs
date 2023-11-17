@@ -1,0 +1,37 @@
+<div class="accordion txt" id="appMenuAccordion">
+  <div class="card" *ngFor="let menu of menuProperties">
+    <div class="card-header" id="menu{{menu.id}}">
+      <h2 class="mb-0">
+        <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+          [attr.data-target]="'#collapse' + menu.id" aria-expanded="true" aria-controls="collapseOne">
+          <div class="my-text">
+            <i class="{{menu.icon}} my-icon"></i>&nbsp;
+
+            {{menu.titre}}
+          </div>
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapse{{menu.id}}" class="collapse" [attr.aria-labelledby]="'menu' + menu.id"
+      data-parent="#appMenuAccordion">
+
+      <div class="card">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let sousMenu of menu.sousMenu"
+            [ngClass]="{'text-white bg-primary': sousMenu.active, '': !sousMenu.active}">
+            <a href="javascript:void(0);" (click)="navigate(sousMenu)" style="color: inherit;">
+              <div class="my-text">
+                <i class="{{sousMenu.icon}} my-icon"></i>&nbsp;
+                {{sousMenu.titre}}
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <br /><br />
+  <button class="btn btn-primary margin-btn my-text mb-5" (click)="logout()"><i
+      class="fa fa-power-off my-icon fa-1x"></i> log-out</button>
+</div>

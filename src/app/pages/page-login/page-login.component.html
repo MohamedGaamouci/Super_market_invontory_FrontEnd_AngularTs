@@ -1,0 +1,37 @@
+<div class="container my-container txt">
+  <div class="card justify-content-md-center">
+    <div class="card-header text-center">
+      <h3 class="_text" style="color: rgb(44, 89, 238);">Se connecter</h3>
+    </div>
+    <div class="card-body">
+      <div class="alert alert-danger" *ngIf="errorMessage">
+        {{errorMessage}}
+      </div>
+      <div class="mb-3">
+        <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="authenticationRequest.login">
+      </div>
+
+      <div class="mb-3">
+
+        <div class="col-md-12 row" *ngIf="visible">
+          <input type="password" class="col-md-11 form-control" placeholder="Mot de passe"
+            [(ngModel)]="authenticationRequest.password">
+          <i class="col-md-1 my-icon blue-color fa fa-eye hc mt-1 " (click)="view_password()"></i>
+        </div>
+
+        <div class="col-md-12 row" *ngIf="!visible">
+          <input type="text" class="col-md-11 form-control" placeholder="Mot de passe"
+            [(ngModel)]="authenticationRequest.password">
+          <i class="col-md-1 my-icon blue-color fa fa-eye-slash hc mt-1" (click)="view_password()"></i>
+        </div>
+      </div>
+
+      <div class="mb-3 d-flex justify-content-between">
+        <a [routerLink]="['/inscrire']" class="btn btn-link my-text">S'inscrire</a>
+        <button type="button" class="btn btn-primary my-text" (click)="login()">
+          <i class="fas fa-check my-icon"></i>&nbsp;Se connecter
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

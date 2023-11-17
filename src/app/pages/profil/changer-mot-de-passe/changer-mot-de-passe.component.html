@@ -1,0 +1,62 @@
+<div class="row m-3 txt">
+  <div class="card col-md-4 text-center mr-3">
+    <div class="col">
+      <div class="mb-3 mt-3">
+        <img src="assets/product.png" class="rounded-circle my-text" width="200px" height="200px"/>
+      </div>
+      <div class="mb-3">
+        <h2 class="my-text">{{user.nom+' '+user.prenom}}</h2>
+        <small class="form-text text-muted my-text">{{adress_user.adresse1+'-'+adress_user.adresse2+'/'+adress_user.pays}}</small>
+      </div>
+    </div>
+  </div>
+  <div class="card col-md-7">
+    <form class="mt-3">
+      <div *ngIf="visible">
+        <i class="col-md-12 text-center mt-1 mb-3 hc my-icon blue-color fa fa-eye"(click)="view_password()"></i>
+      <div class="form-group">
+        <input type="password" class="form-control" name="ancienmotdepasse" placeholder="Ancien mot de passe" [(ngModel)]="ancienMotDePasse">
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" name="nouveaumotdepasse" placeholder="Nouveau mot de passe"[(ngModel)]="changerMotDePasseDto.motDePasse">
+      </div>
+
+      <div class="form-group">
+        <input type="password" class="form-control" name="confirmmotdepasse" placeholder="Confirmer mot de passe" [(ngModel)]="changerMotDePasseDto.confirmMotDePasse" >
+      </div>
+    
+    </div>
+
+      <div *ngIf="!visible">
+        <i class="col-md-12 text-center mt-1 mb-3 hc my-icon blue-color fa fa-eye-slash"(click)="view_password()"></i>
+        <div class="form-group">
+          <input type="text" class="form-control" name="ancienmotdepasse" placeholder="Ancien mot de passe" [(ngModel)]="ancienMotDePasse">
+        </div>
+  
+        <div class="form-group">
+          <input type="text" class="form-control" name="nouveaumotdepasse" placeholder="Nouveau mot de passe"[(ngModel)]="changerMotDePasseDto.motDePasse">
+        </div>
+  
+        <div class="form-group">
+          <input type="text" class="form-control" name="confirmmotdepasse" placeholder="Confirmer mot de passe" [(ngModel)]="changerMotDePasseDto.confirmMotDePasse" >
+        </div>
+       
+      </div>
+
+
+    </form>
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <button class="btn btn-danger mr-3 my-text" (click)="cancel()">
+          <i class="fas fa-ban my-icon"></i>&nbsp;
+          Annuler
+        </button>
+        <button class="btn btn-primary my-text" (click)="changerMotDePasseUtilisateur()">
+          <i class="fas fa-save my-icon"></i>&nbsp;
+          Enregitrer
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
